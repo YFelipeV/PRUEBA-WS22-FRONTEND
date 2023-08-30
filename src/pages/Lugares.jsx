@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { getLugares } from "../data/Lugares";
 import ItemLugares from "../components/Lugares/ItemLugares";
+import { getDepartamento } from "../data/Departementos";
+import FormLugares from "../components/Lugares/FormLugares";
 
 function Lugares() {
   const [data, setdata] = useState([]);
+  const [depart, setDepart] = useState([]);
 
   useEffect(() => {
     (async () => {
       const response = await getLugares();
+      const responseDepartamento = await getDepartamento();
       setdata(response);
+      setDepart(responseDepartamento);
     })();
   }, []);
   return (
@@ -23,36 +28,7 @@ function Lugares() {
 
         <h5 class="alert alert-info">Lugares</h5>
 
-        <form class="form-departamentos">
-          <div class="row">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Nombre del lugar"
-              required
-              autofocus
-            />
-            <textarea
-              cols="40"
-              class="form-control"
-              rows="5"
-              placeholder="Descripción del lugar"
-            ></textarea>
-            <input
-              type="file"
-              class="form-control"
-              placeholder="seleccionar imagen"
-              required
-            />
-            <select class="custom-select d-block w-100" id="state" required="">
-              <option value="">Departamento</option>
-              <option>Amazonas</option>
-            </select>
-            <button class="btn btn-info btn-sm" type="submit">
-              Guardar
-            </button>
-          </div>
-        </form>
+        <FormLugares depart={depart} />
 
         <form class="form-signin">
           <input

@@ -26,7 +26,7 @@ export const createDepratamento = async (departamento) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ departamento }),
+      body: JSON.stringify({departamento}),
     });
 
     const data = await response.json();
@@ -36,8 +36,6 @@ export const createDepratamento = async (departamento) => {
     if (response.status == 200) {
       location.reload();
     }
-
-    return data;
   } catch (error) {
     console.log(error);
   }

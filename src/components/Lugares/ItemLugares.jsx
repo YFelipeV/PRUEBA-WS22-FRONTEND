@@ -1,4 +1,5 @@
 import React from "react";
+import { deleteLugares } from "../../data/Lugares";
 
 function ItemLugares({ datos }) {
   return (
@@ -11,7 +12,11 @@ function ItemLugares({ datos }) {
         </td>
         <td>Risaralda</td>
         <td>
-          <button type="button" class="btn btn-sm btn-outline-danger">
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger"
+            onClick={() => deleteLugares(datos.id)}
+          >
             Eliminar
           </button>
         </td>

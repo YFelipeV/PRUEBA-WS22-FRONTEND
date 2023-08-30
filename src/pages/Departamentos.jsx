@@ -6,18 +6,18 @@ function Departamentos() {
   const [departamento, setDepartamento] = useState("");
   const [data, setdata] = useState([]);
 
-  const handleOnsumbit = (e) => {
-    e.preventDefault();
-    createDepratamento(departamento);
-  };
-
   useEffect(() => {
     (async () => {
       const response = await getDepartamento();
       setdata(response);
     })();
   }, []);
-  console.log(departamento);
+
+  const handleOnsumbit = (e) => {
+    e.preventDefault();
+    createDepratamento(departamento);
+  };
+
   return (
     <>
       <main
