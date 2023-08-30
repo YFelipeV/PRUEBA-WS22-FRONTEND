@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteLugares } from "../../data/Lugares";
 
-function ItemLugares({ datos }) {
+function ItemLugares({ datos, onLugarCreated }) {
   return (
     <>
       <tr>
@@ -14,8 +14,18 @@ function ItemLugares({ datos }) {
         <td>
           <button
             type="button"
-            class="btn btn-sm btn-outline-danger"
-            onClick={() => deleteLugares(datos.id)}
+            className="btn btn-sm btn-outline-danger"
+            onClick={async () => {
+              const eliminar = await deleteLugares(datos.id)
+              if (eliminar) {
+                onLugarCreated()
+              }
+
+
+            }
+
+
+            }
           >
             Eliminar
           </button>

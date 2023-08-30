@@ -34,6 +34,28 @@ export const authUser = async (data2, navigate) => {
     console.log(error);
   }
 };
+export const registrarUser = async (data2, navigate) => {
+  try {
+    const response = await fetch(`${URL}registro`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data2),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (data.api_token) {
+      localStorage.setItem("token", data.api_token);
+      navigate("/dashboard");
+    }
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const cerrarSesion = async (navigate) => {
   try {

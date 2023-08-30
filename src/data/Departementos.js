@@ -11,7 +11,24 @@ export const getDepartamento = async () => {
       },
     });
     const data = await response.json();
-    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const buscarDepartamento = async (id) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(`${URL}departamento/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+
     return data;
   } catch (error) {
     console.log(error);
@@ -26,7 +43,7 @@ export const createDepratamento = async (departamento) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({departamento}),
+      body: JSON.stringify({ departamento }),
     });
 
     const data = await response.json();

@@ -17,6 +17,23 @@ export const getLugares = async () => {
     console.log(error);
   }
 };
+export const buscarLugares = async (id) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(`${URL}lugares/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const createLugares = async (formData) => {
   try {
@@ -31,10 +48,10 @@ export const createLugares = async (formData) => {
     });
 
     const data = await response.json();
-
-    if (response.status == 200) {
+    console.log(response)
+    if (response.status == 201) {
       alert("creado exitosamente");
-      location.reload();
+
     }
 
     return data;
@@ -56,7 +73,9 @@ export const deleteLugares = async (id) => {
     const data = await response.json();
     if (response.status == 200) {
       alert(data.mensaje);
-      location.reload();
+    } if (data.mensaje) {
+      alert(data.mensaje);
+
     }
     console.log(data);
     return data;

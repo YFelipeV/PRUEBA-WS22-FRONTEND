@@ -4,17 +4,17 @@ import catedral from "../../assets/img/catedral-manizales.jpg";
 function ItemHome({ datos }) {
   console.log(datos);
   return (
-    <div class="col-md-4">
-      <div class="card mb-4 box-shadow">
+    <div className="col-md-4">
+      <div className="card mb-4 box-shadow">
         <img
-          class="card-img-top"
+          className="card-img-top"
           src={`http://127.0.0.1:8000/storage/${datos.imagen}`}
         />
-        <div class="card-body">
-          <h4 class="card-title">{datos.nombre}</h4>
-          <p class="card-text">{datos.descripcion}</p>
-          <div class="list-group list-group-flush text-center">
-            <span class="list-group-item bg-info">{datos.nombre}</span>
+        <div className="card-body">
+          <h4 className="card-title">{datos.nombre}</h4>
+          <p className="card-text">{datos.descripcion}</p>
+          <div className="list-group list-group-flush text-center">
+            <span className="list-group-item bg-info">{datos.nombre}</span>
           </div>
         </div>
       </div>

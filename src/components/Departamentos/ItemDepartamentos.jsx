@@ -4,9 +4,9 @@ function ItemDepartamentos({data}) {
   return (
     <tr>
       <td>{data.id}</td>
-      <td>{data.nombre}</td>
-      <td class="text-center">
-        <button type="button" class="btn btn-sm btn-outline-info">
+      <td>{data.departamento}</td>
+      <td className="text-center">
+        <button type="button" className="btn btn-sm btn-outline-info">
           Actualizar
         </button>
       </td>

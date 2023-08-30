@@ -21,29 +21,29 @@ function Login() {
   console.log(data);
   return (
     <>
-      <form class="form-signin" onSubmit={handleSumbit}>
-        <h6 class="alert alert-info">Inicio de sesión</h6>
+      <form className="form-signin" onSubmit={handleSumbit}>
+        <h6 className="alert alert-info">Inicio de sesión</h6>
         <input
           type="email"
-          class="form-control"
+          className="form-control"
           placeholder="email"
           required
           name="email"
           onChange={handleTarget}
-          autofocus
+          autoFocus
         />
         <input
           type="password"
-          class="form-control"
+          className="form-control"
           placeholder="contraseña"
           name="password"
           onChange={handleTarget}
           required
         />
-        <button class="btn btn-lg btn-info btn-block" type="submit">
+        <button className="btn btn-lg btn-info btn-block" type="submit">
           Ingresar
         </button>
-        <img class="mb-4" src={main} />
+        <img className="mb-4" src={main} />
       </form>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createLugares } from "../../data/Lugares";
 
-function FormLugares({ depart }) {
+function FormLugares({ depart, onLugarCreated }) {
   const [data, setdata] = useState({
     nombre: "",
     descripcion: "",
@@ -12,31 +12,34 @@ function FormLugares({ depart }) {
   const handleTarget = ({ target }) => {
     setdata({ ...data, [target.name]: target.value });
   };
-  const handleOnsumbit = (e) => {
+  const handleOnsumbit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("nombre", data.nombre);
     formData.append("descripcion", data.descripcion);
     formData.append("imagen", imagen);
     formData.append("departamento_id", data.departamento_id);
-    createLugares(formData);
+    const createdLugar = await createLugares(formData);
+    if (createdLugar) {
+      onLugarCreated(); // Llamada a la función pasada como prop
+    }
   };
 
   return (
-    <form class="form-departamentos" onSubmit={handleOnsumbit}>
-      <div class="row">
+    <form className="form-departamentos" onSubmit={handleOnsumbit}>
+      <div className="row">
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           placeholder="Nombre del lugar"
           required
           name="nombre"
-          autofocus
+          autoFocus
           onChange={handleTarget}
         />
         <textarea
           cols="40"
-          class="form-control"
+          className="form-control"
           rows="5"
           name="descripcion"
           onChange={handleTarget}
@@ -44,13 +47,13 @@ function FormLugares({ depart }) {
         ></textarea>
         <input
           type="file"
-          class="form-control"
+          className="form-control"
           placeholder="seleccionar imagen"
           required
           onChange={(e) => setimagen(e.target.files[0])}
         />
         <select
-          class="custom-select d-block w-100"
+          className="custom-select d-block w-100"
           id="state"
           required=""
           onChange={handleTarget}
@@ -63,7 +66,7 @@ function FormLugares({ depart }) {
             </option>
           ))}
         </select>
-        <button class="btn btn-info btn-sm" type="submit">
+        <button className="btn btn-info btn-sm" type="submit">
           Guardar
         </button>
       </div>
